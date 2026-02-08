@@ -58,11 +58,12 @@ Minimal config:
 9. Optional guild rules: set `channels.discord.guilds` keyed by guild id (preferred) or slug, with per-channel rules.
 10. Optional native commands: `commands.native` defaults to `"auto"` (on for Discord/Telegram, off for Slack). Override with `channels.discord.commands.native: true|false|"auto"`; `false` clears previously registered commands. Text commands are controlled by `commands.text` and must be sent as standalone `/...` messages. Use `commands.useAccessGroups: false` to bypass access-group checks for commands.
     - Full command list + config: [Slash commands](/tools/slash-commands)
-11. Optional guild context history: set `channels.discord.historyLimit` (default 20, falls back to `messages.groupChat.historyLimit`) to include the last N guild messages as context when replying to a mention. Set `0` to disable.
-12. Reactions: the agent can trigger reactions via the `discord` tool (gated by `channels.discord.actions.*`).
+11. Slash command replies are ephemeral by default. Set `channels.discord.slashCommand.ephemeral=false` to respond in-channel.
+12. Optional guild context history: set `channels.discord.historyLimit` (default 20, falls back to `messages.groupChat.historyLimit`) to include the last N guild messages as context when replying to a mention. Set `0` to disable.
+13. Reactions: the agent can trigger reactions via the `discord` tool (gated by `channels.discord.actions.*`).
     - Reaction removal semantics: see [/tools/reactions](/tools/reactions).
     - The `discord` tool is only exposed when the current channel is Discord.
-13. Native commands use isolated session keys (`agent:<agentId>:discord:slash:<userId>`) rather than the shared `main` session.
+14. Native commands use isolated session keys (`agent:<agentId>:discord:slash:<userId>`) rather than the shared `main` session.
 
 Note: Name → id resolution uses guild member search and requires Server Members Intent; if the bot can’t search members, use ids or `<@id>` mentions.
 Note: Slugs are lowercase with spaces replaced by `-`. Channel names are slugged without the leading `#`.

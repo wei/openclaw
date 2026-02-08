@@ -49,6 +49,16 @@ beforeEach(() => {
   });
 });
 
+describe("discord slash command config", () => {
+  it("defaults to ephemeral replies", async () => {
+    const { resolveDiscordSlashCommandConfig } = await import("./monitor/commands.js");
+
+    expect(resolveDiscordSlashCommandConfig(undefined).ephemeral).toBe(true);
+    expect(resolveDiscordSlashCommandConfig({ ephemeral: true }).ephemeral).toBe(true);
+    expect(resolveDiscordSlashCommandConfig({ ephemeral: false }).ephemeral).toBe(false);
+  });
+});
+
 describe("discord native commands", () => {
   it("skips tool results for native slash commands", { timeout: 60_000 }, async () => {
     const { ChannelType } = await import("@buape/carbon");

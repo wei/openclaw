@@ -260,6 +260,12 @@ export const DiscordAccountSchema = z
     markdown: MarkdownConfigSchema,
     enabled: z.boolean().optional(),
     commands: ProviderCommandsSchema,
+    slashCommand: z
+      .object({
+        ephemeral: z.boolean().optional(),
+      })
+      .strict()
+      .optional(),
     configWrites: z.boolean().optional(),
     token: z.string().optional(),
     allowBots: z.boolean().optional(),

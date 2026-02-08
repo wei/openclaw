@@ -1138,6 +1138,9 @@ Multi-account support lives under `channels.discord.accounts` (see the multi-acc
         moderation: false,
       },
       replyToMode: "off", // off | first | all
+      slashCommand: {
+        ephemeral: true,
+      },
       dm: {
         enabled: true, // disable all DMs when false
         policy: "pairing", // pairing | allowlist | open | disabled

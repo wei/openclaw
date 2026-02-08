@@ -79,6 +79,11 @@ export type DiscordActionConfig = {
   presence?: boolean;
 };
 
+export type DiscordSlashCommandConfig = {
+  /** Reply ephemerally to slash commands (default: true). */
+  ephemeral?: boolean;
+};
+
 export type DiscordIntentsConfig = {
   /** Enable Guild Presences privileged intent (requires Portal opt-in). Default: false. */
   presence?: boolean;
@@ -106,6 +111,8 @@ export type DiscordAccountConfig = {
   markdown?: MarkdownConfig;
   /** Override native command registration for Discord (bool or "auto"). */
   commands?: ProviderCommandsConfig;
+  /** Slash command response configuration. */
+  slashCommand?: DiscordSlashCommandConfig;
   /** Allow channel-initiated config writes (default: true). */
   configWrites?: boolean;
   /** If false, do not start this Discord account. Default: true. */
